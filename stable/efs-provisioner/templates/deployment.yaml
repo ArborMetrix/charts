@@ -74,7 +74,11 @@ spec:
       volumes:
       - name: pv-volume
         nfs:
+          {{- if .Values.efsProvisioner.ipAddress }}
+          server: {{ .Values.efsProvisioner.ipAddress }}
+          {{- else }}
           server: {{ .Values.efsProvisioner.efsFileSystemId }}.efs.{{ .Values.efsProvisioner.awsRegion }}.amazonaws.com
+          {{- end }}
           path: /
 {{- end }}
     {{- if .Values.nodeSelector }}

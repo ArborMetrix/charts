@@ -32,6 +32,7 @@ annotations: {}
 efsProvisioner:
   efsFileSystemId: fs-12345678
   awsRegion: us-east-2
+  ipAddress: "" # this can be used for across vpc access, if provided efsFileSystemId is ignored
   path: /example-pv
   provisionerName: example.com/aws-efs
   storageClass:
