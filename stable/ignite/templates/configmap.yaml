@@ -37,6 +37,16 @@ data:
 
             <property name="peerClassLoadingEnabled" value="{{ .Values.peerClassLoadingEnabled | default false }}"/>
 
+            {{- with .Values.lifecycleBeans }}
+            <property name="lifecycleBeans">
+                <list>
+                    {{- range . }}
+                    <bean class="{{ . }}"/>
+                    {{- end }}
+                </list>
+            </property>
+            {{- end }}
+
 {{- if (.Values.persistence.enabled) }}
             <!-- Enabling Apache Ignite Persistent Store. -->
             <property name="dataStorageConfiguration">
@@ -78,7 +88,7 @@ data:
                         -->
                         <bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.kubernetes.TcpDiscoveryKubernetesIpFinder">
                             <property name="namespace" value="{{ .Release.Namespace }}"/>
-                            <property name="serviceName" value="{{ include "ignite.fullname" . }}"/>
+                            <property name="serviceName" value="{{ include "ignite.serviceName" . }}"/>
                         </bean>
                     </property>
                 </bean>
