@@ -17,7 +17,7 @@ serviceAccount:
   name:
 
 env:
-  OPTION_LIBS: "ignite-kubernetes,ignite-rest-http"
+  OPTION_LIBS: "ignite-kubernetes,ignite-rest-http,ignite-log4j2"
   IGNITE_QUIET: "false"
   JVM_OPTS: "-Djava.net.preferIPv4Stack=true"
 peerClassLoadingEnabled: false
