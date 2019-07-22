@@ -26,6 +26,8 @@ spec:
             items:
             - key: ignite-config.xml
               path: default-config.xml
+            - key: log4j2.xml
+              path: log4j2.xml
       containers:
       - name: ignite
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
