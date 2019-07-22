@@ -27,7 +27,7 @@ data:
         <Appenders>
             <Console name="CONSOLE" target="SYSTEM_OUT">
                 <PatternLayout pattern="[%d{ISO8601}][%-5p][%t][%c{1}]%notEmpty{[%markerSimpleName]} %m%n"/>
-                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="ACCEPT"/>
+                <ThresholdFilter level="INFO" onMatch="DENY" onMismatch="ACCEPT"/>
             </Console>
 
             <Console name="CONSOLE_ERR" target="SYSTEM_ERR">
@@ -76,9 +76,7 @@ data:
 
             <Root level="INFO">
                 <!-- Uncomment to enable logging to console. -->
-                <!--
                 <AppenderRef ref="CONSOLE" level="DEBUG"/>
-                -->
 
                 <AppenderRef ref="CONSOLE_ERR" level="ERROR"/>
                 <AppenderRef ref="FILE" level="DEBUG"/>
@@ -117,7 +115,7 @@ data:
 
         <bean class="org.apache.ignite.configuration.IgniteConfiguration">
             <property name="metricsLogFrequency" value="0"/>
-            
+
             <property name="gridLogger">
                 <bean class="org.apache.ignite.logger.log4j2.Log4J2Logger">
                 <constructor-arg type="java.lang.String" value="/opt/ignite/apache-ignite/config/log4j2.xml"/>
